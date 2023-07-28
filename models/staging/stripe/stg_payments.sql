@@ -2,7 +2,7 @@ with payment as (
     
     select
         id as order_id,
-        amount as amount
+        {{ cents_to_dollars('amount') }}  as amount
 
     from {{ source('stripe', 'payment') }}
 )
